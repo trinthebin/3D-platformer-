@@ -10,8 +10,8 @@ public class CharacterController : MonoBehaviour
 
 
     float rotation = 0.0f;
-    float camRotation = 0.0f;
-    float rotationSpeed = 2.0f;
+    public float camRotation = 0.0f;
+    public float rotationSpeed = 2.0f;
     public float camRotationSpeed = 1.5f;
     public float jumpForce = 300.0f;
 
@@ -22,11 +22,18 @@ public class CharacterController : MonoBehaviour
     public GameObject groundChecker;
     public LayerMask groundLayer;
 
+    public float maxSprint = 5.0f;
+    float sprintTimer;
+
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         cam = GameObject.Find("Main Camera ");
         myRigidbody = GetComponent<Rigidbody>();
+
+        sprintTimer = maxSprint;
     }
 
     // Update is called once per frame
@@ -38,10 +45,26 @@ public class CharacterController : MonoBehaviour
             myRigidbody.AddForce(transform.up * jumpForce);
         }
 
+        if (Input.GetKey(KeyCode.LeftShift) && sprintTimer > 0.0f)
+        {
+            maxSpeed = sprintSpeed;
+            sprintTimer = sprintTimer - Time.deltaTime;
+        } else
+        {
+            maxSpeed = normalSpeed;
+            if (Input.GetKey(KeyCode.LeftShift) == false)
+            {
+                sprintTimer = sprintTimer + Time.deltaTime;
+            }
+        }
+
+        sprintTimer = Mathf.Clamp(sprintTimer, 0.0f, maxSprint);
+
+        camRotation = Mathf.Clamp(camRotation, -40.0f, 40.0f);
 
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
 
-        Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed + (transform.right * Input.GetAxis("Horizontal") * maxSpeed)
+        Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
         myRigidbody.velocity = new Vector3(newVelocity.x, myRigidbody.velocity.y, newVelocity.z);
 
         rotation = rotation + Input.GetAxis("Mouse X") * rotationSpeed;
