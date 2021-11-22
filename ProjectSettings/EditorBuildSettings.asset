@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/3D platformer.unity
+    guid: 0ccc4d5580631cc429205b596ad2ed8e
+  - enabled: 1
+    path: Assets/GameOver.unity
+    guid: 8c7447f5505a83c4a9464f59871b5f27
   m_configObjects: {}
