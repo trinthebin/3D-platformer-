@@ -46,7 +46,7 @@ public class CharacterController : MonoBehaviour
 
         if (isOnGround == true && Input.GetKeyDown(KeyCode.Space))
         {
-            myAnim.SetTrigger("jumped");
+            
             myRigidbody.AddForce(transform.up * jumpForce);
         }
 
@@ -70,7 +70,7 @@ public class CharacterController : MonoBehaviour
         camRotation = Mathf.Clamp(camRotation, -40.0f, 40.0f);
 
         isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
-        myAnim.SetBool("isOnGround", isOnGround);
+       
 
         Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
         myAnim.SetFloat("speed", newVelocity.magnitude);
