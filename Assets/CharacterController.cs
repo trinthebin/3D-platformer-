@@ -36,7 +36,7 @@ public class CharacterController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        cam = GameObject.Find("Main Camera ");
+        cam = GameObject.Find("Main Camera");
         myRigidbody = GetComponent<Rigidbody>();
 
         sprintTimer = maxSprint;
@@ -80,7 +80,7 @@ public class CharacterController : MonoBehaviour
 
         camRotation = Mathf.Clamp(camRotation, -40.0f, 40.0f);
 
-        isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.1f, groundLayer);
+        isOnGround = Physics.CheckSphere(groundChecker.transform.position, 0.3f, groundLayer);
         myAnim.SetBool("isOnGround", isOnGround);
 
         Vector3 newVelocity = transform.forward * Input.GetAxis("Vertical") * maxSpeed + (transform.right * Input.GetAxis("Horizontal") * maxSpeed);
