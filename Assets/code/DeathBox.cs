@@ -8,7 +8,8 @@ public class DeathBox : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

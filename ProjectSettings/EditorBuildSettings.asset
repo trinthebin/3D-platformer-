@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/3D platformer.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4643e4972d8318941bf0075e1cb2f973
+  - enabled: 1
+    path: Assets/Scenes/3D platformer.unity
     guid: 0ccc4d5580631cc429205b596ad2ed8e
   - enabled: 1
-    path: Assets/GameOver.unity
+    path: Assets/Scenes/GameOver.unity
     guid: 8c7447f5505a83c4a9464f59871b5f27
+  - enabled: 1
+    path: Assets/Scenes/Option.unity
+    guid: 8f3ed8d405cdac14a9d37e09f480ca5b
   m_configObjects: {}
